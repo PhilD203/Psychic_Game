@@ -1,5 +1,13 @@
     
-    for(i=0; )
+    for (i = 0; i < 26; i++) {
+
+        var li = document.createElement("li");
+        li.innerHTML = "letter " + (i+10).toString(36) + " ";
+        li.style.listStyle = "none";
+        li.style.display = "inline";
+        document.getElementById("letter-main").appendChild(li);
+      
+      }
     
     // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
     var computerChoices = ["a", "b", "c"];
