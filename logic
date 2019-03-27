@@ -1,0 +1,20 @@
+
+
+
+Psychic Game
+
+user pushes key 
+
+wins
+    if user guesses correct char logs a number in the win column
+
+losses
+    if user uses all guesses then logs a number in the loss column
+
+guesses left
+    tracks the amount of guesses left to determine win or loss
+
+
+track letters guessed
+    keeps track of keys attempted
+

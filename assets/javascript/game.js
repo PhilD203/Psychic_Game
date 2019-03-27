@@ -1,31 +1,53 @@
-    
-    for (i = 0; i < 26; i++) {
+document.onkeyup = function (event) {
+var userGuess = event.key;
+guessInsert(userGuess);
+};
+var totalGuesses = 9
+var wins = 0
+var losses = 0
+var guessesLeft = totalGuesses
+var pastGuesses = []
+var computerChar = computerGenerate()
 
-        var li = document.createElement("li");
-        li.innerHTML = "letter " + (i+10).toString(36) + " ";
-        li.style.listStyle = "none";
-        li.style.display = "inline";
-        document.getElementById("letter-main").appendChild(li);
+
+function guessInsert(userGuess) {
+    pastGuesses.push(userGuess)
+    document.getElementById("lettersGuessed").innerHTML = pastGuesses
+    guessesLeft = guessesLeft - 1
+    document.getElementById("guessesLeft").innerHTML = guessesLeft
+    if (computerChar == userGuess){
+        wins = wins + 1
+        document.getElementById("Wins").innerHTML = wins 
+        computerGenerate()
+    }
+    else{
+        if(guessesLeft < 1){
+            console.log("You Lose")
+            losses = losses + 1
+            document.getElementById("Losses").innerHTML = losses
+            computerGenerate()
+        }
+        else{
+            
+        }
       
-      }
+    }
     
-    // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
-    var computerChoices = ["a", "b", "c"];
+}
 
-    // This function is run whenever the user presses a key.
-    document.onkeyup = function(event) {
+function computerGenerate() {
+    var computerChoices = "abcdefghijklmnopqrstuvwxyz".split("");
+    var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    console.log(computerGuess)
+    pastGuesses = [] 
+    guessesLeft = totalGuesses 
+    return computerGuess
+}
 
-      // Determines which key was pressed.
-      var userGuess = event.key;
 
-      // Randomly chooses a choice from the options array. This is the Computer's guess.
-      var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
-      // Alerts the key the user pressed (userGuess).
-      alert("User guess: " + userGuess);
 
-      // Alerts the Computer's guess.
-      alert("Computer guess: " + computerGuess);
 
-    };
- 
+
+
+
